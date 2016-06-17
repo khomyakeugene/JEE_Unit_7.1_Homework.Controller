@@ -5,7 +5,7 @@ import org.junit.BeforeClass;
 /**
  * Created by Yevhen on 08.06.2016.
  */
-public class RestaurantControllerJdbcTest extends RestaurantControllerTest {
+public class RestaurantControllerHibernateTest extends RestaurantControllerTest {
     private final static String APPLICATION_CONTEXT_NAME = "restaurant-controller-context.xml";
 
     @BeforeClass

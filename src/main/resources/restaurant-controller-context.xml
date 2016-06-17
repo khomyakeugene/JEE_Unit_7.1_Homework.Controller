@@ -8,7 +8,7 @@
 
     <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"/>
 
-    <import resource="classpath*:restaurant-jdbc-context.xml"/>
+    <import resource="classpath*:restaurant-hibernate-context.xml"/>
 
 
     <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -35,7 +35,7 @@
     </bean>
 
     <bean class="com.company.restaurant.controllers.CourseControllerImpl" id="courseController">
-        <property name="courseCategoryDao" ref="courseCategoryDicDao"/>
+        <property name="courseCategoryDao" ref="courseCategoryDao"/>
         <property name="courseDao" ref="courseDao"/>
     </bean>
 
