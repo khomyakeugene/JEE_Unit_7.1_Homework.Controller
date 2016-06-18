@@ -81,7 +81,8 @@ public abstract class RestaurantControllerTest {
         orderView.setTableId(tableId());
         orderView.setEmployeeId(employeeId());
         orderView.setOrderNumber(Util.getRandomString());
-        closedOrderId = orderController.addOrder(orderView).getOrderId();
+        orderView = orderController.addOrder(orderView);
+        closedOrderId = orderView.getOrderId();
 
         // Courses for closed order ----------------------------
         closedOrderCourseName1 = Util.getRandomString();
@@ -205,9 +206,6 @@ public abstract class RestaurantControllerTest {
 
         employeeController.delEmployee(employee);
         assertTrue(employeeController.findEmployeeById(employeeId) == null);
-        // Test delete of non-existent data
-        employeeController.delEmployee(employee);
-        employeeController.delEmployee(employee.getEmployeeId());
     }
 
     @Test(timeout = 2000)
@@ -305,8 +303,6 @@ public abstract class RestaurantControllerTest {
 
         menuController.delMenu(name);
         assertTrue(menuController.findMenuByName(name) == null);
-        // Test delete of non-existent data
-        menuController.delMenu(menu);
     }
 
     @Test(timeout = 2000)
