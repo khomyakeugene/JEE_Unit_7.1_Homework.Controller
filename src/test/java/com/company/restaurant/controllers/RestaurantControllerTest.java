@@ -120,7 +120,7 @@ public abstract class RestaurantControllerTest {
         courseController.delCourse(closedOrderCourseName2);
     }
 
-    public static void initEnvironment() throws Exception {
+    protected static void initEnvironment() throws Exception {
         prepareTestCourse();
         prepareClosedOrder();
     }
@@ -446,12 +446,17 @@ public abstract class RestaurantControllerTest {
     public void addFindDelWarehouseTest() throws Exception {
         for (Ingredient ingredient: warehouseController.findAllIngredients()) {
             for (Portion portion : warehouseController.findAllPortions()) {
-                warehouseController.addIngredientToWarehouse(ingredient, portion, Util.getRandomFloat());
-                warehouseController.takeIngredientFromWarehouse(ingredient, portion, Util.getRandomFloat());
+                float amountToAdd = Util.getRandomFloat();
+                warehouseController.addIngredientToWarehouse(ingredient, portion, amountToAdd);
+                float amountToTake = Util.getRandomFloat();
+                warehouseController.takeIngredientFromWarehouse(ingredient, portion, amountToTake);
 
                 System.out.println("warehouseController.findPortionById(" + portion.getPortionId() + ") test ...");
                 assertTrue(ObjectService.isEqualByGetterValuesStringRepresentation(portion,
                         warehouseController.findPortionById(portion.getPortionId())));
+
+                // "Clear" warehouse position
+                warehouseController.takeIngredientFromWarehouse(ingredient, portion, amountToAdd - amountToTake);
             }
 
             System.out.println("warehouseController.findIngredientById(" + ingredient.getId() + ") test ...");
