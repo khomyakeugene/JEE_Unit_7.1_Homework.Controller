@@ -449,6 +449,7 @@ public abstract class RestaurantControllerTest {
         for (Warehouse warehouse : warehouseController.findAllWarehouseIngredients()) {
             System.out.println(warehouse.getIngredient().getName() + ": " + warehouse.getAmount());
         }
+
         System.out.println("Warehouse elapsing ingredients:");
         for (Warehouse warehouse : warehouseController.findAllElapsingWarehouseIngredients((float)500.0)) {
             System.out.println(warehouse.getIngredient().getName() + ": " +
