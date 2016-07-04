@@ -41,6 +41,7 @@
     </bean>
 
     <bean class="com.company.restaurant.controllers.KitchenControllerImpl" id="kitchenController">
+        <property name="disableCourseWithoutIngredients" value="false"/>
         <property name="cookedCourseDao" ref="cookedCourseDao"/>
         <property name="courseIngredientDao" ref="courseIngredientDao"/>
         <property name="warehouseController" ref="warehouseController"/>
