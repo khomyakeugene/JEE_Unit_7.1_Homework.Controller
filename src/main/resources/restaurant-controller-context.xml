@@ -42,6 +42,7 @@
 
     <bean class="com.company.restaurant.controllers.KitchenControllerImpl" id="kitchenController">
         <property name="cookedCourseDao" ref="cookedCourseDao"/>
+        <property name="courseIngredientDao" ref="courseIngredientDao" />
     </bean>
     <!-- END OF DB-CONTEXT -->
 </beans>
